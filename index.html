@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Craftulator</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/spectre.css/dist/spectre.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">Craftulator</div>
+
+      <ul class="navbar-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#calculator">Gallary</a></li>
+        <li><a href="#painting">About</a></li>
+        <li><a href="#other">Tax Calculator</a></li>
+      </ul>
+      <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <ul id="sidebar_content">
+        <div class="navbar-brand1">Craftulator</div>
+        <hr />
+        <div class="sidebar__main">
+          <li>
+            <a href="#" onclick="showSection('calculator')">Calculator</a>
+          </li>
+          <li><a href="#" onclick="showSection('painting')">Painting</a></li>
+          <li>
+            <a href="#" onclick="showSection('tax-calculator')"
+              >Tax Calculator</a
+            >
+          </li>
+        </div>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <section id="home"></section>
+
+      <!-- <section id="calculator">
+
+      </section> -->
+      <!-- this is the calculator section -->
+      <section id="calculator">
+        <div class="calculator-container">
+          <!-- <h1>Calculator</h1> -->
+          <div class="calculator">
+            <div class="display" id="display">0</div>
+            <div class="buttons">
+              <button onclick="clearDisplay()">C</button>
+              <button onclick="deleteLast()">⌫</button>
+              <button onclick="appendOperator('/')">÷</button>
+              <button onclick="appendOperator('*')">×</button>
+
+              <button onclick="appendNumber('7')">7</button>
+              <button onclick="appendNumber('8')">8</button>
+              <button onclick="appendNumber('9')">9</button>
+              <button onclick="appendOperator('-')">−</button>
+
+              <button onclick="appendNumber('4')">4</button>
+              <button onclick="appendNumber('5')">5</button>
+              <button onclick="appendNumber('6')">6</button>
+              <button onclick="appendOperator('+')">+</button>
+
+              <button onclick="appendNumber('1')">1</button>
+              <button onclick="appendNumber('2')">2</button>
+              <button onclick="appendNumber('3')">3</button>
+              <button onclick="calculate()">=</button>
+
+              <button onclick="appendNumber('0')">0</button>
+              <button onclick="appendNumber('.')">.</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="painting">
+        <div class="container">
+          <!-- <h1>Let's Paint !</h1> -->
+          <div class="row">
+            <div class="column col-sm-12">
+              <canvas id="paintCanvas" width="600" height="400"></canvas>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column col-sm-12">
+              <button class="btn btn-primary" id="clearBtn">
+                <i class="far fa-file"></i> Clear
+              </button>
+              <button class="btn" id="blackBrush">
+                <i class="fas fa-paint-brush" style="color: black"></i>
+              </button>
+              <button class="btn" id="pinkBrush">
+                <i class="fas fa-paint-brush" style="color: #f50057"></i>
+              </button>
+              <button class="btn" id="blueBrush">
+                <i class="fas fa-paint-brush" style="color: #2879ff"></i>
+              </button>
+              <button class="btn" id="yellowBrush">
+                <i class="fas fa-paint-brush" style="color: yellow"></i>
+              </button>
+              <button class="btn" id="eraserBtn">
+                <i class="fas fa-eraser"></i> Eraser
+              </button>
+            </div>
+          </div>
+          <div class="brushTool">
+            <div class="row">
+              <div class="column col-sm-12">
+                <div class="form-group">
+                  <p>Brush Size:</p>
+                  <input
+                    type="range"
+                    id="brushSize"
+                    name="brushSize"
+                    min="1"
+                    max="10"
+                    value="5"
+                    class="slider"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <button id="blueBrush">
+                  <span id="brushSizeDisplay">5</span>
+                </button>
+                <!-- Other brush buttons -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tax Calculator Section -->
+      <section id="tax-calculator" style="display: none">
+        <div class="tax-calculator-container">
+          <h2>Tax Calculator</h2>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" placeholder="Enter amount" />
+
+          <label for="taxRate">Tax Rate (%):</label>
+          <input type="number" id="taxRate" placeholder="Enter tax rate" />
+
+          <button onclick="calculateTax()">Calculate Tax</button>
+
+          <div id="taxResult" class="result"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
